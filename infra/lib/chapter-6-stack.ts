@@ -1,5 +1,5 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
-import { Port, SubnetType, Vpc } from 'aws-cdk-lib/aws-ec2';
+import { Port, SubnetType, Vpc, IpAddresses } from 'aws-cdk-lib/aws-ec2';
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 import { ECS } from './constructs/ECS';
@@ -30,11 +30,12 @@ export class Chapter6Stack extends Stack {
       hosted_zone: this.route53.hosted_zone,
     });
 
-    const cidr =
-      process.env.NODE_ENV === 'Production' ? '10.0.0.0/16' : '10.1.0.0/16';
+    const ipAddresses = IpAddresses.cidr(
+      process.env.NODE_ENV === 'Production' ? '10.0.0.0/16' : '10.1.0.0/16',
+    );
 
     this.vpc = new Vpc(this, `MyVPC-${process.env.NODE_ENV || ''}`, {
-      cidr,
+      ipAddresses,
       subnetConfiguration: [
         {
           cidrMask: 24,

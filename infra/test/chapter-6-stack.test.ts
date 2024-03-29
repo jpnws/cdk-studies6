@@ -108,6 +108,8 @@ describe('Testing Chapter 6 code.', () => {
       DependsOn: [
         Match.stringLikeRegexp('LBtestPublicListenertestECStestGroup'),
         Match.stringLikeRegexp('LBtestPublicListenertest'),
+        Match.stringLikeRegexp('TaskDefinitiontestTaskRoleDefaultPolicy'),
+        Match.stringLikeRegexp('TaskDefinitiontestTaskRole'),
       ],
     });
   });
@@ -127,7 +129,7 @@ describe('Testing Chapter 6 code.', () => {
     template.resourceCountIs('AWS::RDS::DBInstance', 1);
 
     template.hasResourceProperties('AWS::RDS::DBInstance', {
-      DBInstanceClass: Match.exact('db.t2.small'),
+      DBInstanceClass: Match.exact('db.t3.small'),
       AllocatedStorage: Match.exact('100'),
       CopyTagsToSnapshot: true,
       DBInstanceIdentifier: Match.anyValue(),
