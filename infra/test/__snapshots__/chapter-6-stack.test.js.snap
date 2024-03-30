@@ -2559,7 +2559,10 @@ echo ECS_AWSVPC_BLOCK_IMDS=true >> /etc/ecs/ecs.config",
         "PolicyDocument": {
           "Statement": [
             {
-              "Action": "secretsmanager:GetSecretValue",
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:ListSecrets",
+              ],
               "Effect": "Allow",
               "Resource": {
                 "Ref": "MySQLCredentialstestA71485A8",

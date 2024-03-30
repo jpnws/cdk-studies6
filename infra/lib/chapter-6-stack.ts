@@ -74,7 +74,10 @@ export class Chapter6Stack extends Stack {
 
     this.ecs.task_definition.taskRole.addToPrincipalPolicy(
       new PolicyStatement({
-        actions: ['secretsmanager:GetSecretValue'],
+        actions: [
+          'secretsmanager:GetSecretValue',
+          'secretsmanager:ListSecrets',
+        ],
         resources: [this.rds.credentials.secretArn],
       }),
     );

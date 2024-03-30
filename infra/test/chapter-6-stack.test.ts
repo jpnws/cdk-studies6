@@ -188,7 +188,7 @@ describe('Testing Chapter 6 code.', () => {
           Ref: Match.stringLikeRegexp('MyVPCtestrdsSubnet2Subnet'),
         },
         {
-          Ref: Match.stringLikeRegexp('MyVPCtestrdsSubnet3Subnet75CD7701'),
+          Ref: Match.stringLikeRegexp('MyVPCtestrdsSubnet3Subnet'),
         },
       ],
     });
